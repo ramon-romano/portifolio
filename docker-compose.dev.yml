@@ -1,0 +1,42 @@
+services:
+  api-dev:
+    image: maven:3.9.9-eclipse-temurin-17
+    container_name: portifolio-api-dev
+    working_dir: /app
+    command: mvn spring-boot:run
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DEVTOOLS_RESTART_ENABLED=true
+    volumes:
+      - ./portifolio-api/portifolio-api:/app
+      - maven_cache:/root/.m2
+    networks:
+      - portifolio-dev-net
+
+  frontend-dev:
+    image: node:20-alpine
+    container_name: frontend-portfolio-dev
+    working_dir: /app
+    command: sh -c "npm install && npm run dev -- -H 0.0.0.0 -p 3000"
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8080
+    volumes:
+      - ./frontend-portfolio:/app
+      - frontend_node_modules:/app/node_modules
+      - frontend_next_cache:/app/.next
+    depends_on:
+      - api-dev
+    networks:
+      - portifolio-dev-net
+
+networks:
+  portifolio-dev-net:
+    driver: bridge
+
+volumes:
+  maven_cache:
+  frontend_node_modules:
+  frontend_next_cache:

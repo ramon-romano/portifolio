@@ -124,6 +124,7 @@ O projeto esta preparado para subir frontend + API com Docker Compose.
 
 Arquivos criados:
 - `docker-compose.yml` (raiz do projeto)
+- `docker-compose.dev.yml` (desenvolvimento com hot reload)
 - `frontend-portfolio/Dockerfile`
 - `portifolio-api/portifolio-api/Dockerfile`
 
@@ -133,6 +134,25 @@ Na raiz do monorepo (`C:\\portifolio`):
 
 ```powershell
 docker compose up -d --build
+```
+
+### Desenvolvimento com Docker (hot reload)
+
+Para desenvolver com atualizacao automatica ao salvar arquivos:
+
+```powershell
+docker compose -f docker-compose.dev.yml up
+```
+
+Nesse modo:
+- Frontend roda com `next dev`
+- API roda com `mvn spring-boot:run` + devtools
+- Alteracoes no codigo refletem sem rebuild completo de imagem
+
+Parar ambiente dev:
+
+```powershell
+docker compose -f docker-compose.dev.yml down
 ```
 
 ### Derrubar containers
