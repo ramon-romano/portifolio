@@ -1,0 +1,55 @@
+﻿"use client";
+
+import { useEffect, useState } from "react";
+import { FaLaravel } from "react-icons/fa";
+import { SiNextdotjs, SiSpringboot } from "react-icons/si";
+
+const ROLE_TEXT = "Desenvolvedor Full-Stack";
+
+export default function Hero() {
+  const [typedText, setTypedText] = useState("");
+
+  useEffect(() => {
+    let index = 0;
+    const timer = setInterval(() => {
+      index += 1;
+      setTypedText(ROLE_TEXT.slice(0, index));
+
+      if (index >= ROLE_TEXT.length) {
+        clearInterval(timer);
+      }
+    }, 90);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <section id="hero" className="scroll-mt-20 min-h-[calc(100vh-5rem)] max-w-6xl mx-auto px-6 pt-20 pb-12 flex flex-col items-center justify-center text-center">
+      <h1 className="text-5xl sm:text-7xl font-light tracking-[0.2em] uppercase text-white">
+        RAMON ROMANO
+      </h1>
+
+      <div className="mt-8 w-full max-w-2xl border border-white/20 bg-black/50 rounded-xl px-5 py-4 text-left shadow-lg">
+        <p className="font-mono text-lg sm:text-2xl text-zinc-100">
+          <span className="text-zinc-500">{">"}</span> {typedText}
+          <span className="inline-block w-[10px] h-[1.1em] ml-1 align-middle bg-white animate-pulse" />
+        </p>
+      </div>
+
+      <div className="mt-10 flex items-center gap-10 sm:gap-14 text-white/90">
+        <div className="flex flex-col items-center gap-2">
+          <FaLaravel className="text-4xl sm:text-5xl" />
+          <span className="text-xs tracking-[0.2em] uppercase text-zinc-300">Laravel</span>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <SiSpringboot className="text-4xl sm:text-5xl" />
+          <span className="text-xs tracking-[0.2em] uppercase text-zinc-300">Spring Boot</span>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <SiNextdotjs className="text-4xl sm:text-5xl" />
+          <span className="text-xs tracking-[0.2em] uppercase text-zinc-300">Next.js</span>
+        </div>
+      </div>
+    </section>
+  );
+}
