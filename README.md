@@ -118,6 +118,40 @@ npm run start
 .\mvnw.cmd test
 ```
 
+## Docker
+
+O projeto esta preparado para subir frontend + API com Docker Compose.
+
+Arquivos criados:
+- `docker-compose.yml` (raiz do projeto)
+- `frontend-portfolio/Dockerfile`
+- `portifolio-api/portifolio-api/Dockerfile`
+
+### Subir com Docker
+
+Na raiz do monorepo (`C:\\portifolio`):
+
+```powershell
+docker compose up -d --build
+```
+
+### Derrubar containers
+
+```powershell
+docker compose down
+```
+
+### Ver logs
+
+```powershell
+docker compose logs -f
+```
+
+### Acesso
+
+- Frontend: `http://localhost:3000`
+- API: `http://localhost:8080/api/projetos`
+
 ## Troubleshooting
 
 ### Erro: `JAVA_HOME environment variable is not defined correctly`

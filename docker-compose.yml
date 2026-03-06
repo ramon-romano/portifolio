@@ -1,0 +1,32 @@
+services:
+  api:
+    build:
+      context: ./portifolio-api/portifolio-api
+      dockerfile: Dockerfile
+    container_name: portifolio-api
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    networks:
+      - portifolio-net
+
+  frontend:
+    build:
+      context: ./frontend-portfolio
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:8080
+    container_name: frontend-portfolio
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8080
+    restart: unless-stopped
+    networks:
+      - portifolio-net
+
+networks:
+  portifolio-net:
+    driver: bridge
