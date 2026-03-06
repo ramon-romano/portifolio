@@ -1,14 +1,19 @@
-import { Oswald } from "next/font/google";
+﻿import { Oswald } from "next/font/google";
+import type { Metadata } from "next";
 import "./globals.css";
 
-const oswald = Oswald({ 
+const oswald = Oswald({
   subsets: ["latin"],
-  weight: ['200', '300', '400', '500'] 
+  weight: ["200", "300", "400", "500"],
 });
 
-export const metadata = {
-  title: "Portfólio | Ramon",
-  description: "Meu portfólio de desenvolvimento",
+export const metadata: Metadata = {
+  title: "Portfolio | Ramon Romano",
+  description: "Meu portfolio de desenvolvimento",
+  icons: {
+    icon: "/img/logo.png",
+    apple: "/img/logo.png",
+  },
 };
 
 export default function RootLayout({

@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { FaLaravel } from "react-icons/fa";
 import { SiNextdotjs, SiSpringboot } from "react-icons/si";
@@ -24,10 +25,20 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="scroll-mt-20 min-h-[calc(100vh-5rem)] max-w-6xl mx-auto px-6 pt-20 pb-12 flex flex-col items-center justify-center text-center">
-      <h1 className="text-5xl sm:text-7xl font-light tracking-[0.2em] uppercase text-white">
-        RAMON ROMANO
-      </h1>
+    <section
+      id="hero"
+      className="scroll-mt-20 min-h-[calc(100vh-5rem)] max-w-6xl mx-auto px-6 pt-20 pb-12 flex flex-col items-center justify-center text-center"
+    >
+      <div className="flex items-center gap-5">
+        <Image
+          src="/img/logo.png"
+          alt="Logo Ramon Romano"
+          width={86}
+          height={86}
+          className="rounded-md [animation:spin_10s_linear_infinite]"
+        />
+        <h1 className="text-5xl sm:text-7xl font-light tracking-[0.2em] uppercase text-white">RAMON ROMANO</h1>
+      </div>
 
       <div className="mt-8 w-full max-w-2xl border border-white/20 bg-black/50 rounded-xl px-5 py-4 text-left shadow-lg">
         <p className="font-mono text-lg sm:text-2xl text-zinc-100">
