@@ -18,7 +18,7 @@ public class PortfolioMockService {
                         "IA para identificar risco em transferencias Pix com foco em prevencao de fraude.",
                         "Projeto Academico",
                         List.of("Java", "Spring Boot", "React", "MySQL"),
-                        "O Pix Analyser foi desenvolvido em Spring Boot no backend com foco em processamento de regras de negocio para analise de risco em transacoes financeiras.\n\nNo frontend, usamos React para reproduzir uma jornada de transacao inspirada no ambiente bancario, conectando cada etapa com o resultado da analise.",
+                        "O Pix Analyser teve seu backend desenvolvido em Spring Boot, sendo feita sua IA em Python e treinada unitariamente para a verificação de transações bancárias, identificando padrões e lendo histório de transações de valores, o frontend foi inspirado no frontend do app do banco do Bradesco, sendo feito uma réplica em React quase perfeita, para mais detalhes, peço que acessem o video acima ou o github para detalhes do frontend. Esse projeto foi feito em um grupo de 4 pessoas, 2 para o backend e 2 para o frontend.",
                         "https://www.youtube.com/embed/dQw4w9WgXcQ",
                         "https://github.com/ramon-romano/PixAnalyser"
                 ),
@@ -28,7 +28,7 @@ public class PortfolioMockService {
                         "Plataforma para visualizacao de dados, metricas e acompanhamento operacional.",
                         "Cliente JML",
                         List.of("Laravel", "Next.js", "MySQL"),
-                        "Omega e uma plataforma voltada para acompanhamento operacional com paineis de indicadores, leitura de metricas e apoio a tomada de decisao.\n\nNo frontend em Next.js, o foco foi entregar navegacao rapida e interface limpa para consulta de dados em tempo real.",
+                        "Ômega é um sistema desenvolvido para acompanhamento operacional, com o intuito principal em visualização de valores, trazendo além de metas e vendas, contendo também dimensão de cada setor e cad região brasileira, além de valores de históricos, com acessos restritos e modos para a TV da sede.\n\nNo frontend em Next.js, o foco foi entregar navegacao rapida e interface limpa para consulta de dados em tempo real, já no backend teve seu desenvolvimento em Laravel, sendo utilizado o modelo MVC, tendo um CRUD completo de usuários, cursos e demais, foi um projeto muito divertido de se fazer, buscando sempre melhorar a experiência do usuário.",
                         "https://www.youtube.com/embed/dQw4w9WgXcQ",
                         "https://github.com/ramon-romano/omega-jml"
                 ),
@@ -38,9 +38,19 @@ public class PortfolioMockService {
                         "Fluxo de diagnostico com formularios e consolidacao de dados para tomada de decisao.",
                         "Cliente JML",
                         List.of("Laravel", "Next.js", "MySQL"),
-                        "JML Flow foi projetado para conduzir diagnosticos estruturados com formularios inteligentes, controle de respostas e consolidacao de resultados.\n\nCom Laravel no backend, implementamos validacoes para evitar duplicidade e garantir integridade das respostas.",
+                        "JML Flow foi projetado para conduzir diagnosticos estruturados com formularios inteligentes, controle de respostas e consolidacao de resultados, focados unicamente em avaliar perfeitamente com base em um tema em especifico.\n\nCom Laravel no backend, implementamos validacoes para evitar duplicidade e garantir integridade das respostas, passando sempre por uma metodologia de avaliação, e após isso calculado a métrica de cada usuário que respondeu, contendo gráficos, as respostas de cada um, e tendo como exportar, tanto o dashboard quanto as repostas unitáriamente em PDF.",
                         "https://www.youtube.com/embed/dQw4w9WgXcQ",
                         "https://github.com/ramon-romano/sistema-diagnostico-jml"
+                ),
+                new ProjetoDto(
+                        "jml-insight",
+                        "JML Insight",
+                        "Uma IA que faz analise de documentos gerando níveis de compatibilidade.",
+                        "Cliente JML",
+                        List.of("Python", "Next.js"),
+                        "A IA do JML Insight é uma Inteligência Artificial que faz análise de documentos incluidos pelo próprio usuário, uma sendo o curso da empresa, e o outro sendo do organograma da entidade, a IA faz a leitura dos documentos e com base em uma lógica de palavras chaves e treinamento, ela sabe quais são os setores mais compativeis com aquele curso, sendo muito útil para a equipe comercial da empresa.\n\nO sistema foi desenvolvido em Python como linguagem de backend garantindo um melhor fluxo de informações para a IA consumir e analisar, já para o frontend foi utilizado o Next.js para entregar uma interface limpa e intuitiva para o usuário.",
+                        "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                        "https://github.com/ramon-romano/jml-insight"
                 )
         );
     }

@@ -1,4 +1,6 @@
-﻿export default function Sobre() {
+import Image from "next/image";
+
+export default function Sobre() {
   return (
     <section id="sobre" className="scroll-mt-20 min-h-[calc(100vh-5rem)] max-w-6xl mx-auto px-6 py-12 flex flex-col justify-center">
       <h2 className="text-3xl font-light tracking-wider text-white mb-8 uppercase border-b border-white/25 pb-2 inline-block">
@@ -15,9 +17,18 @@
           </p>
         </div>
 
-        <div className="w-full max-w-sm mx-auto lg:mx-0 lg:justify-self-end">
-          <div className="aspect-[4/5] rounded-2xl border border-white/30 bg-white/5 backdrop-blur-sm flex items-center justify-center text-center px-6">
-            <p className="text-zinc-300 tracking-wide uppercase text-sm">Espaço para sua foto</p>
+        <div className="w-full max-w-sm mx-auto lg:mx-0 lg:justify-self-end relative">
+          {/* Abstract Glow Background */}
+          <div className="absolute -inset-4 bg-gradient-to-tr from-white/20 to-transparent rounded-[60%_40%_30%_70%_/_60%_30%_70%_40%] blur-2xl opacity-40" />
+          
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[60%_40%_30%_70%_/_60%_30%_70%_40%] border border-white/20 bg-zinc-900 shadow-2xl">
+            <Image
+              src="/img/foto perfil.jpeg"
+              alt="Ramon Romano"
+              fill
+              className="object-cover"
+              priority
+            />
           </div>
         </div>
       </div>
