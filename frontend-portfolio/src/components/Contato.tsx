@@ -1,4 +1,4 @@
-﻿import { Mail, Linkedin, Github, MessageCircle } from "lucide-react";
+import { Mail, Linkedin, Github, MessageCircle } from "lucide-react";
 
 export default function Contato() {
   return (
@@ -21,7 +21,7 @@ export default function Contato() {
         </a>
 
         <a
-          href="https://wa.me/5541999761508"
+          href="https://wa.me/5541999761508?text=Olá%20Ramon,%20encontrei%20seu%20portifólio,%20gostaria%20de%20conversar%20com%20você"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-3 px-8 py-4 bg-white text-black rounded-xl hover:bg-zinc-200 hover:-translate-y-1 transition-all duration-300 shadow-lg"
