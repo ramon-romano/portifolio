@@ -95,7 +95,7 @@ export default function Projetos() {
   }, [projetoAberto]);
 
   return (
-    <section id="projetos" className="scroll-mt-20 min-h-[calc(100vh-5rem)] max-w-6xl mx-auto px-6 py-12 flex flex-col justify-center">
+    <section id="projetos" className="scroll-mt-20 min-h-[calc(100vh-5rem)] max-w-6xl mx-auto px-6 py-12 flex flex-col justify-center overflow-x-hidden">
       <div className="mb-12 flex items-end justify-between gap-4">
         <h2 className="text-3xl font-light tracking-wider text-white uppercase border-b border-white/25 pb-2 inline-block">
           Meus Projetos

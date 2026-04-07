@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Sobre() {
   return (
-    <section id="sobre" className="scroll-mt-20 min-h-[calc(100vh-5rem)] max-w-6xl mx-auto px-6 py-12 flex flex-col justify-center">
+    <section id="sobre" className="scroll-mt-20 min-h-[calc(100vh-5rem)] max-w-6xl mx-auto px-6 py-12 flex flex-col justify-center overflow-x-hidden">
       <h2 className="text-3xl font-light tracking-wider text-white mb-8 uppercase border-b border-white/25 pb-2 inline-block">
         Sobre Mim
       </h2>
@@ -19,7 +19,7 @@ export default function Sobre() {
 
         <div className="w-full max-w-sm mx-auto lg:mx-0 lg:justify-self-end relative">
           {/* Abstract Glow Background */}
-          <div className="absolute -inset-4 bg-gradient-to-tr from-white/20 to-transparent rounded-[60%_40%_30%_70%_/_60%_30%_70%_40%] blur-2xl opacity-40" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent rounded-[60%_40%_30%_70%_/_60%_30%_70%_40%] blur-2xl opacity-40" />
           
           <div className="relative aspect-[4/5] overflow-hidden rounded-[60%_40%_30%_70%_/_60%_30%_70%_40%] border border-white/20 bg-zinc-900 shadow-2xl">
             <Image

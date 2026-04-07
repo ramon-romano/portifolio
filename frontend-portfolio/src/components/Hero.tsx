@@ -37,7 +37,7 @@ export default function Hero() {
           height={64}
           className="sm:w-[86px] sm:h-[86px] rounded-md [animation:spin_10s_linear_infinite]"
         />
-        <h1 className="text-3xl sm:text-5xl md:text-7xl font-light tracking-[0.2em] uppercase text-white">RAMON ROMANO</h1>
+        <h1 className="text-2xl sm:text-5xl md:text-7xl font-light tracking-[0.1em] sm:tracking-[0.2em] uppercase text-white">RAMON ROMANO</h1>
       </div>
 
       <div className="mt-8 w-full max-w-2xl border border-white/20 bg-black/50 rounded-xl px-5 py-4 text-left shadow-lg">

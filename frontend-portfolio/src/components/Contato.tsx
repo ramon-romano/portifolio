@@ -2,7 +2,7 @@ import { Mail, Linkedin, Github, MessageCircle } from "lucide-react";
 
 export default function Contato() {
   return (
-    <section id="contato" className="scroll-mt-20 min-h-[calc(100vh-5rem)] max-w-4xl mx-auto px-6 py-12 text-center flex flex-col justify-center">
+    <section id="contato" className="scroll-mt-20 min-h-[calc(100vh-5rem)] max-w-4xl mx-auto px-6 py-12 text-center flex flex-col justify-center overflow-x-hidden">
       <h2 className="text-3xl font-light tracking-wider text-white mb-8 uppercase border-b border-white/25 pb-2 inline-block">
         Vamos Conversar?
       </h2>
