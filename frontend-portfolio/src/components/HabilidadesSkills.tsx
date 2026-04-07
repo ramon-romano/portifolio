@@ -5,6 +5,7 @@ import { FaLaravel, FaPython } from "react-icons/fa";
 import { SiCplusplus, SiMysql, SiNextdotjs, SiSpringboot } from "react-icons/si";
 import { fetchPortfolioData } from "@/src/lib/portfolioApi";
 import { type SkillItem } from "@/src/types/portfolio";
+import { useLanguage } from "@/src/context/LanguageContext";
 
 const fallbackSkills: SkillItem[] = [
   {
@@ -49,16 +50,17 @@ const iconMap: Record<string, React.JSX.Element> = {
 };
 
 export default function HabilidadesSkills() {
+  const { language, t } = useLanguage();
   const [habilidades, setHabilidades] = useState<SkillItem[]>(fallbackSkills);
 
   useEffect(() => {
-    fetchPortfolioData<SkillItem[]>("/api/skills", fallbackSkills).then(setHabilidades);
-  }, []);
+    fetchPortfolioData<SkillItem[]>("/api/skills", fallbackSkills, language).then(setHabilidades);
+  }, [language]);
 
   return (
     <section id="habilidades" className="scroll-mt-20 min-h-[calc(100vh-5rem)] max-w-6xl mx-auto px-6 py-12 flex flex-col justify-center">
       <h2 className="text-3xl font-light tracking-wider text-white mb-12 uppercase border-b border-white/25 pb-2 inline-block">
-        Habilidades e Skills
+        {t.skills.title}
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

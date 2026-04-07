@@ -5,24 +5,25 @@ import { useEffect, useState } from "react";
 import { FaLaravel } from "react-icons/fa";
 import { SiNextdotjs, SiSpringboot } from "react-icons/si";
 
-const ROLE_TEXT = "Desenvolvedor Full-Stack";
+import { useLanguage } from "@/src/context/LanguageContext";
 
 export default function Hero() {
+  const { t } = useLanguage();
   const [typedText, setTypedText] = useState("");
 
   useEffect(() => {
     let index = 0;
     const timer = setInterval(() => {
       index += 1;
-      setTypedText(ROLE_TEXT.slice(0, index));
+      setTypedText(t.hero.role.slice(0, index));
 
-      if (index >= ROLE_TEXT.length) {
+      if (index >= t.hero.role.length) {
         clearInterval(timer);
       }
     }, 90);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [t.hero.role]);
 
   return (
     <section

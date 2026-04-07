@@ -7,6 +7,7 @@ import { FaReact, FaLaravel, FaJava, FaPython } from "react-icons/fa";
 import { SiSpringboot, SiNextdotjs, SiMysql } from "react-icons/si";
 import { fetchPortfolioData } from "@/src/lib/portfolioApi";
 import { type Projeto } from "@/src/types/portfolio";
+import { useLanguage } from "@/src/context/LanguageContext";
 
 const fallbackProjetos: Projeto[] = [
   {
@@ -68,6 +69,7 @@ export default function Projetos() {
     Python: <FaPython title="Python" />,
   };
 
+  const { language, t } = useLanguage();
   const [projetos, setProjetos] = useState<Projeto[]>(fallbackProjetos);
   const [projetoAberto, setProjetoAberto] = useState<Projeto | null>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -81,8 +83,8 @@ export default function Projetos() {
   const portalTarget = typeof document !== "undefined" ? document.body : null;
 
   useEffect(() => {
-    fetchPortfolioData<Projeto[]>("/api/projetos", fallbackProjetos).then(setProjetos);
-  }, []);
+    fetchPortfolioData<Projeto[]>("/api/projetos", fallbackProjetos, language).then(setProjetos);
+  }, [language]);
 
   useEffect(() => {
     if (!projetoAberto) return;
@@ -98,7 +100,7 @@ export default function Projetos() {
     <section id="projetos" className="scroll-mt-20 min-h-[calc(100vh-5rem)] max-w-6xl mx-auto px-6 py-12 flex flex-col justify-center overflow-x-hidden">
       <div className="mb-12 flex items-end justify-between gap-4">
         <h2 className="text-3xl font-light tracking-wider text-white uppercase border-b border-white/25 pb-2 inline-block">
-          Meus Projetos
+          {t.projects.title}
         </h2>
 
         <div className="flex gap-5 mb-1 shrink-0 items-center">
@@ -146,7 +148,7 @@ export default function Projetos() {
             </div>
 
             <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-4 text-sm uppercase tracking-wider text-zinc-300">
-              <span>Ver detalhes</span>
+              <span>{t.projects.details}</span>
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </div>
           </article>
@@ -169,7 +171,7 @@ export default function Projetos() {
                 onClick={() => setProjetoAberto(null)}
                 className="absolute right-5 top-4 cursor-pointer text-xl font-bold text-white/90 transition-colors hover:text-white"
               >
-                X
+                {t.projects.back}
               </button>
 
               <p className="inline-flex rounded-full border border-white/25 px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-zinc-300">
@@ -203,7 +205,7 @@ export default function Projetos() {
                 className="mt-7 inline-flex cursor-pointer items-center gap-2 rounded-lg border border-white/25 px-4 py-2 text-sm uppercase tracking-wide text-white transition-colors hover:border-white hover:bg-white hover:text-black"
               >
                 <Github className="h-4 w-4" />
-                Ver repositorio
+                {t.projects.repository}
               </a>
             </div>
           </div>,

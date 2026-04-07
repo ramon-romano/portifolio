@@ -1,42 +1,44 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState } from "react";
 import { fetchPortfolioData } from "@/src/lib/portfolioApi";
 import { type ExperienciaItem } from "@/src/types/portfolio";
+import { useLanguage } from "@/src/context/LanguageContext";
 
 const fallbackExperiencias: ExperienciaItem[] = [
   {
     empresa: "Elis",
-    cargo: "Estagiario de TI",
+    cargo: "Estagiário de TI",
     periodo: "jun 2024 - jun 2025",
     jornada:
-      "Suporte tecnico a usuarios e maquinas, resolucao de problemas de hardware e software e manutencao preventiva/corretiva da infraestrutura.",
+      "Suporte técnico a usuários e máquinas, resolução de problemas de hardware e software e manutenção preventiva/corretiva da infraestrutura.",
     tecnologias: ["PostgreSQL", "Linux", "Windows", "Redes"],
   },
   {
     empresa: "GPA Tech",
-    cargo: "Frellancer Desenvolvedor Full-Stack",
+    cargo: "Freelancer Desenvolvedor Full-Stack",
     periodo: "ago 2025 - set 2025",
     jornada:
-      "Freelancer fazendo manutencao full-stack em sistemas de clientes, atuando em frontend e backend com foco em entregas rapidas.",
+      "Freelancer fazendo manutenção full-stack em sistemas de clientes, atuando em frontend e backend com foco em entregas rápidas.",
     tecnologias: ["Node.js", "Next.js"],
   },
   {
     empresa: "Grupo JML",
-    cargo: "Desenvolvedor Full-Stack Junior",
+    cargo: "Desenvolvedor Full-Stack Júnior",
     periodo: "set 2025 - Atual",
     jornada:
-      "Responsavel por manutencao e evolucao de sistemas de clientes, alem do desenvolvimento de novas solucoes para a empresa.",
+      "Responsável por manutenção e evolução de sistemas de clientes, além do desenvolvimento de novas soluções para a empresa.",
     tecnologias: ["Spring Boot", "Laravel", "Next.js", "MySQL"],
   },
 ];
 
 export default function Experiencia() {
+  const { language, t } = useLanguage();
   const [experiencias, setExperiencias] = useState<ExperienciaItem[]>(fallbackExperiencias);
 
   useEffect(() => {
-    fetchPortfolioData<ExperienciaItem[]>("/api/experiencias", fallbackExperiencias).then(setExperiencias);
-  }, []);
+    fetchPortfolioData<ExperienciaItem[]>("/api/experiencias", fallbackExperiencias, language).then(setExperiencias);
+  }, [language]);
 
   return (
     <section
@@ -44,7 +46,7 @@ export default function Experiencia() {
       className="scroll-mt-20 min-h-[calc(100vh-5rem)] max-w-6xl mx-auto px-6 py-12 flex flex-col justify-center"
     >
       <h2 className="text-3xl font-light tracking-wider text-white mb-10 uppercase border-b border-white/25 pb-2 inline-block">
-        Experiencia
+        {t.experience.title}
       </h2>
 
       <div className="space-y-6">

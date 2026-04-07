@@ -3,16 +3,18 @@
 import Image from "next/image";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useLanguage } from "@/src/context/LanguageContext";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
 
   const navLinks = [
-    { href: "#sobre", label: "SOBRE" },
-    { href: "#experiencia", label: "EXPERIENCIA" },
-    { href: "#projetos", label: "PROJETOS" },
-    { href: "#habilidades", label: "HABILIDADES" },
-    { href: "#contato", label: "CONTATO" },
+    { href: "#sobre", label: t.nav.about },
+    { href: "#experiencia", label: t.nav.experience },
+    { href: "#projetos", label: t.nav.projects },
+    { href: "#habilidades", label: t.nav.skills },
+    { href: "#contato", label: t.nav.contact },
   ];
 
   return (
@@ -23,41 +25,77 @@ export default function Header() {
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex gap-12 text-white/90">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="inline-block text-lg font-light tracking-wide hover:text-white hover:scale-110 transition-all duration-300"
+        <nav className="hidden md:flex items-center gap-10 text-white/90">
+          <div className="flex gap-8 border-r border-white/10 pr-8">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="inline-block text-sm font-light tracking-widest hover:text-white transition-all duration-300 uppercase"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+
+          {/* Language Switcher */}
+          <div className="flex gap-3 text-xs font-bold tracking-widest transition-all">
+            <button
+              onClick={() => setLanguage("pt")}
+              className={`hover:text-white transition-colors cursor-pointer ${language === "pt" ? "text-white border-b border-white" : "text-white/40"}`}
             >
-              {link.label}
-            </a>
-          ))}
+              PT
+            </button>
+            <span className="text-white/20">/</span>
+            <button
+              onClick={() => setLanguage("en")}
+              className={`hover:text-white transition-colors cursor-pointer ${language === "en" ? "text-white border-b border-white" : "text-white/40"}`}
+            >
+              EN
+            </button>
+          </div>
         </nav>
 
         {/* Mobile Toggle */}
-        <button
-          className="md:hidden text-white"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle Menu"
-        >
-          {isOpen ? <X size={32} /> : <Menu size={32} />}
-        </button>
+        <div className="flex items-center gap-6 md:hidden">
+          <div className="flex gap-3 text-xs font-bold tracking-widest">
+            <button
+              onClick={() => setLanguage("pt")}
+              className={`transition-colors ${language === "pt" ? "text-white" : "text-white/40"}`}
+            >
+              PT
+            </button>
+            <button
+              onClick={() => setLanguage("en")}
+              className={`transition-colors ${language === "en" ? "text-white" : "text-white/40"}`}
+            >
+              EN
+            </button>
+          </div>
+
+          <button
+            className="text-white"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle Menu"
+          >
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu Overlay */}
       <div
         className={`fixed inset-0 top-20 bg-zinc-950 z-40 transition-all duration-500 md:hidden ${
-          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          isOpen ? "opacity-100 pointer-events-auto translate-x-0" : "opacity-0 pointer-events-none translate-x-full"
         }`}
       >
-        <nav className="flex flex-col items-center pt-20 h-full gap-8 text-white">
+        <nav className="flex flex-col items-center pt-20 h-full gap-8 text-white uppercase">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className="text-2xl font-light tracking-[0.2em] hover:text-indigo-400 transition-colors"
+              className="text-2xl font-light tracking-[0.2em] hover:text-white transition-colors"
             >
               {link.label}
             </a>

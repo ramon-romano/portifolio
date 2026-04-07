@@ -23,17 +23,17 @@ public class PortfolioController {
     }
 
     @GetMapping("/projetos")
-    public List<ProjetoDto> projetos() {
-        return portfolioMockService.getProjetos();
+    public List<ProjetoDto> projetos(@org.springframework.web.bind.annotation.RequestParam(required = false, defaultValue = "pt") String lang) {
+        return portfolioMockService.getProjetos(lang);
     }
 
     @GetMapping("/experiencias")
-    public List<ExperienciaDto> experiencias() {
-        return portfolioMockService.getExperiencias();
+    public List<ExperienciaDto> experiencias(@org.springframework.web.bind.annotation.RequestParam(required = false, defaultValue = "pt") String lang) {
+        return portfolioMockService.getExperiencias(lang);
     }
 
     @GetMapping("/skills")
-    public List<SkillDto> skills() {
-        return portfolioMockService.getSkills();
+    public List<SkillDto> skills(@org.springframework.web.bind.annotation.RequestParam(required = false, defaultValue = "pt") String lang) {
+        return portfolioMockService.getSkills(lang);
     }
 }

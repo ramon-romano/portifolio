@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { useLanguage } from "@/src/context/LanguageContext";
 
 const DURATION_MS = 5000;
 const TICK_MS = 50;
@@ -11,6 +12,7 @@ type WelcomeIntroProps = {
 };
 
 export default function WelcomeIntro({ onFinish }: WelcomeIntroProps) {
+  const { t } = useLanguage();
   const [progress, setProgress] = useState(0);
   const [done, setDone] = useState(false);
 
@@ -32,7 +34,7 @@ export default function WelcomeIntro({ onFinish }: WelcomeIntroProps) {
     return () => clearInterval(interval);
   }, [onFinish]);
 
-  const welcomeLetters = useMemo(() => "BEM-VINDO".split(""), []);
+  const welcomeLetters = useMemo(() => t.welcome.title.split(""), [t.welcome.title]);
   const stars = useMemo(
     () =>
       Array.from({ length: 44 }, (_, i) => ({

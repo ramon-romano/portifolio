@@ -1,8 +1,11 @@
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8080";
 
-export async function fetchPortfolioData<T>(endpoint: string, fallback: T): Promise<T> {
+export async function fetchPortfolioData<T>(endpoint: string, fallback: T, lang: string = "pt"): Promise<T> {
   try {
-    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+    const url = new URL(`${API_BASE_URL}${endpoint}`);
+    url.searchParams.append("lang", lang);
+
+    const response = await fetch(url.toString(), {
       cache: "no-store",
     });
 

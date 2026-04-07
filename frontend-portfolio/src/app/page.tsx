@@ -11,7 +11,10 @@ import Projetos from "@/src/components/Projetos";
 import Contato from "../components/Contato";
 import WelcomeIntro from "@/src/components/WelcomeIntro";
 
+import { useLanguage } from "@/src/context/LanguageContext";
+
 export default function Home() {
+  const { t } = useLanguage();
   const [showIntro, setShowIntro] = useState(true);
   const stars = useMemo(
     () =>
@@ -80,7 +83,7 @@ export default function Home() {
         </main>
 
         <footer className="border-t border-white/15 py-6 text-center text-sm tracking-wide text-zinc-300">
-          Desenvolvido por Ramon Romano
+          {t.footer.developedBy}
         </footer>
       </div>
 
