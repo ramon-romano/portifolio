@@ -16,7 +16,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed top-0 w-full h-20 z-50 bg-black/80 backdrop-blur-md border-b border-white/15 transition-all duration-300">
+    <header className="fixed top-0 w-full h-20 z-50 bg-zinc-950 border-b border-white/15 transition-all duration-300">
       <div className="max-w-6xl mx-auto h-full px-6 flex justify-between items-center">
         <a href="#hero" className="text-white uppercase transition-all duration-300 hover:opacity-80 hover:scale-105">
           <Image src="/img/logo.png" alt="Logo Ramon Romano" width={64} height={64} className="rounded-sm" />
@@ -47,7 +47,7 @@ export default function Header() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 top-20 bg-black/95 z-40 transition-all duration-500 md:hidden ${
+        className={`fixed inset-0 top-20 bg-zinc-950 z-40 transition-all duration-500 md:hidden ${
           isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
