@@ -1,6 +1,6 @@
-﻿"use client";
+"use client";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaLaravel, FaPython } from "react-icons/fa";
 import { SiCplusplus, SiMysql, SiNextdotjs, SiSpringboot } from "react-icons/si";
 import { fetchPortfolioData } from "@/src/lib/portfolioApi";
@@ -39,7 +39,7 @@ const fallbackSkills: SkillItem[] = [
   },
 ];
 
-const iconMap: Record<string, JSX.Element> = {
+const iconMap: Record<string, React.JSX.Element> = {
   Laravel: <FaLaravel className="text-2xl" />,
   "Spring Boot": <SiSpringboot className="text-2xl" />,
   "Next.js": <SiNextdotjs className="text-2xl" />,

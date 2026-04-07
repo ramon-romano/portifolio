@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { createPortal } from "react-dom";
 import { Github, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { FaReact, FaLaravel, FaJava, FaPython } from "react-icons/fa";
@@ -58,7 +58,7 @@ const fallbackProjetos: Projeto[] = [
 
 
 export default function Projetos() {
-  const iconMap: Record<string, JSX.Element> = {
+  const iconMap: Record<string, React.JSX.Element> = {
     Java: <FaJava title="Java" />,
     "Spring Boot": <SiSpringboot title="Spring Boot" />,
     React: <FaReact title="React" />,
