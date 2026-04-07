@@ -9,56 +9,101 @@ import { fetchPortfolioData } from "@/src/lib/portfolioApi";
 import { type Projeto } from "@/src/types/portfolio";
 import { useLanguage } from "@/src/context/LanguageContext";
 
-const fallbackProjetos: Projeto[] = [
-  {
-    id: "pix-analyser",
-    titulo: "Pix Analyser",
-    resumo: "IA para identificar risco em transferencias Pix com foco em prevencao de fraude.",
-    destaque: "Projeto Academico",
-    stack: ["Java", "Spring Boot", "React", "MySQL"],
-    descricaoCompleta:
-      "O Pix Analyser teve seu backend desenvolvido em Spring Boot, sendo feita sua IA em Python e treinada unitariamente para a verificação de transações bancárias, identificando padrões e lendo histório de transações de valores, o frontend foi inspirado no frontend do app do banco do Bradesco, sendo feito uma réplica em React quase perfeita, para mais detalhes, peço que acessem o video acima ou o github para detalhes do frontend. Esse projeto foi feito em um grupo de 4 pessoas, 2 para o backend e 2 para o frontend.",
-    videoUrl: "https://www.youtube.com/embed/JqL-D5D3pHw",
-    githubUrl: "https://github.com/ramon-romano/PixAnalyser",
-  },
-  {
-    id: "omega",
-    titulo: "Omega",
-    resumo: "Plataforma para visualizacao de dados, metricas e acompanhamento operacional.",
-    destaque: "Cliente JML",
-    stack: ["Laravel", "Next.js", "MySQL"],
-    descricaoCompleta:
-      "Ômega é um sistema desenvolvido para acompanhamento operacional, com o intuito principal em visualização de valores, trazendo além de metas e vendas, contendo também dimensão de cada setor e cad região brasileira, além de valores de históricos, com acessos restritos e modos para a TV da sede.\n\nNo frontend em Next.js, o foco foi entregar navegacao rapida e interface limpa para consulta de dados em tempo real, já no backend teve seu desenvolvimento em Laravel, sendo utilizado o modelo MVC, tendo um CRUD completo de usuários, cursos e demais, foi um projeto muito divertido de se fazer, buscando sempre melhorar a experiência do usuário.",
-    videoUrl: "https://www.youtube.com/embed/I64NZFvRcGs",
-    githubUrl: "https://github.com/ramon-romano/omega-jml",
-  },
-  {
-    id: "jml-flow",
-    titulo: "JML Flow",
-    resumo: "Fluxo de diagnostico com formularios e consolidacao de dados para tomada de decisao.",
-    destaque: "Cliente JML",
-    stack: ["Laravel", "Next.js", "MySQL"],
-    descricaoCompleta:
-      "JML Flow foi projetado para conduzir diagnosticos estruturados com formularios inteligentes, controle de respostas e consolidacao de resultados, focados unicamente em avaliar perfeitamente com base em um tema em especifico.\n\nCom Laravel no backend, implementamos validacoes para evitar duplicidade e garantir integridade das respostas, passando sempre por uma metodologia de avaliação, e após isso calculado a métrica de cada usuário que respondeu, contendo gráficos, as respostas de cada um, e tendo como exportar, tanto o dashboard quanto as repostas unitáriamente em PDF.",
-    videoUrl: "https://www.youtube.com/embed/MLC2SqxEGys",
-    githubUrl: "https://github.com/ramon-romano/sistema-diagnostico-jml",
-  },
-  {
-    id: "jml-insight",
-    titulo: "JML Insight",
-    resumo: "Uma IA que faz analise de documentos gerando níveis de compatibilidade.",
-    destaque: "Cliente JML",
-    stack: ["Python", "Next.js"],
-    descricaoCompleta:
-      "A IA do JML Insight é uma Inteligência Artificial que faz análise de documentos incluidos pelo próprio usuário, uma sendo o curso da empresa, e o outro sendo do organograma da entidade, a IA faz a leitura dos documentos e com base em uma lógica de palavras chaves e treinamento, ela sabe quais são os setores mais compativeis com aquele curso, sendo muito útil para a equipe comercial da empresa.\n\nO sistema foi desenvolvido em Python como linguagem de backend garantindo um melhor fluxo de informações para a IA consumir e analisar, já para o frontend foi utilizado o Next.js para entregar uma interface limpa e intuitiva para o usuário.",
-    videoUrl: "https://www.youtube.com/embed/rtCnfFMhgfE",
-    githubUrl: "https://github.com/ramon-romano/jml-insight",
-  },
-];
-
-
-
 export default function Projetos() {
+  const { language, t } = useLanguage();
+
+  const fallbackProjetos: Projeto[] = language === "pt" ? [
+    {
+      id: "pix-analyser",
+      titulo: "Pix Analyser",
+      resumo: "IA para identificar risco em transferencias Pix com foco em prevencao de fraude.",
+      destaque: "Projeto Academico",
+      stack: ["Java", "Spring Boot", "React", "MySQL"],
+      descricaoCompleta:
+        "O Pix Analyser teve seu backend desenvolvido em Spring Boot, sendo feita sua IA em Python e treinada unitariamente para a verificação de transações bancárias, identificando padrões e lendo histório de transações de valores, o frontend foi inspirado no frontend do app do banco do Bradesco, sendo feita uma réplica em React quase perfeita, para mais detalhes, peço que acesssem o video acima ou o github para detalhes do frontend. Esse projeto foi feito em um grupo de 4 pessoas, 2 para o backend e 2 para o frontend.",
+      videoUrl: "https://www.youtube.com/embed/JqL-D5D3pHw",
+      githubUrl: "https://github.com/ramon-romano/PixAnalyser",
+    },
+    {
+      id: "omega",
+      titulo: "Omega",
+      resumo: "Plataforma para visualizacao de dados, metricas e acompanhamento operacional.",
+      destaque: "Cliente JML",
+      stack: ["Laravel", "Next.js", "MySQL"],
+      descricaoCompleta:
+        "Ômega é um sistema desenvolvido para acompanhamento operacional, com o intuito principal em visualização de valores, trazendo além de metas e vendas, contendo também dimensão de cada setor e cad região brasileira, além de valores de históricos, com acessos restritos e modos para a TV da sede.\n\nNo frontend em Next.js, o foco foi entregar navegacao rapida e interface limpa para consulta de dados em tempo real, já no backend teve seu desenvolvimento em Laravel, sendo utilizado o modelo MVC, tendo um CRUD completo de usuários, cursos e demais, foi um projeto muito divertido de se fazer, buscando sempre melhorar a experiência do usuário.",
+      videoUrl: "https://www.youtube.com/embed/I64NZFvRcGs",
+      githubUrl: "https://github.com/ramon-romano/omega-jml",
+    },
+    {
+      id: "jml-flow",
+      titulo: "JML Flow",
+      resumo: "Fluxo de diagnostico com formularios e consolidacao de dados para tomada de decisao.",
+      destaque: "Cliente JML",
+      stack: ["Laravel", "Next.js", "MySQL"],
+      descricaoCompleta:
+        "JML Flow foi projetado para conduzir diagnosticos estruturados com formularios inteligentes, controle de respostas e consolidacao de resultados, focados unicamente em avaliar perfeitamente com base em um tema em especifico.\n\nCom Laravel no backend, implementamos validacoes para evitar duplicidade e garantir integridade das respostas, passando sempre por uma metodologia de avaliação, e após isso calculado a métrica de cada usuário que respondeu, contendo gráficos, as respostas de cada um, e tendo como exportar, tanto o dashboard quanto as repostas unitáriamente em PDF.",
+      videoUrl: "https://www.youtube.com/embed/MLC2SqxEGys",
+      githubUrl: "https://github.com/ramon-romano/sistema-diagnostico-jml",
+    },
+    {
+      id: "jml-insight",
+      titulo: "JML Insight",
+      resumo: "Uma IA que faz analise de documentos gerando níveis de compatibilidade.",
+      destaque: "Cliente JML",
+      stack: ["Python", "Next.js"],
+      descricaoCompleta:
+        "A IA do JML Insight é uma Inteligência Artificial que faz análise de documentos incluidos pelo próprio usuário, uma sendo o curso da empresa, e o outro sendo do organograma da entidade, a IA faz a leitura dos documentos e com base em uma lógica de palavras chaves e treinamento, ela sabe quais são os setores mais compativeis com aquele curso, sendo muito útil para a equipe comercial da empresa.\n\nO sistema foi desenvolvido em Python como linguagem de backend garantindo um melhor fluxo de informações para a IA consumir e analisar, já para o frontend foi utilizado o Next.js para entregar uma interface limpa e intuitiva para o usuário.",
+      videoUrl: "https://www.youtube.com/embed/rtCnfFMhgfE",
+      githubUrl: "https://github.com/ramon-romano/jml-insight",
+    },
+  ] : [
+    {
+      id: "pix-analyser",
+      titulo: "Pix Analyser",
+      resumo: "AI to identify risk in Pix transfers with focus on fraud prevention.",
+      destaque: "Academic Project",
+      stack: ["Java", "Spring Boot", "React", "MySQL"],
+      descricaoCompleta:
+        "Pix Analyser's backend was developed in Spring Boot, with its AI built in Python and individually trained to verify bank transactions, identifying patterns and reading transaction history, the frontend was inspired by the Bradesco bank app, being an almost perfect React replica. For more details, please check the video above or the github repository. This project was made by a group of 4 people, 2 for backend and 2 for frontend.",
+      videoUrl: "https://www.youtube.com/embed/JqL-D5D3pHw",
+      githubUrl: "https://github.com/ramon-romano/PixAnalyser",
+    },
+    {
+      id: "omega",
+      titulo: "Omega",
+      resumo: "Platform for data visualization, metrics and operational monitoring.",
+      destaque: "JML Client",
+      stack: ["Laravel", "Next.js", "MySQL"],
+      descricaoCompleta:
+        "Ômega is a system developed for operational monitoring, with the main goal of visualizing values, bringing goals and sales, also containing dimensions for each sector and each Brazilian region, plus historical values, with restricted access and TV modes for the headquarters.\n\nIn the Next.js frontend, the focus was to deliver fast navigation and a clean interface for real-time data consultation, while the backend was developed in Laravel using the MVC model, featuring a complete CRUD for users, courses and others. It was a very fun project to make, always seeking to improve the user experience.",
+      videoUrl: "https://www.youtube.com/embed/I64NZFvRcGs",
+      githubUrl: "https://github.com/ramon-romano/omega-jml",
+    },
+    {
+      id: "jml-flow",
+      titulo: "JML Flow",
+      resumo: "Diagnostic flow with forms and data consolidation for decision making.",
+      destaque: "JML Client",
+      stack: ["Laravel", "Next.js", "MySQL"],
+      descricaoCompleta:
+        "JML Flow was designed to conduct structured diagnostics with intelligent forms, response control and results consolidation, focused uniquely on evaluating perfectly based on a specific theme.\n\nWith Laravel in the backend, we implemented validations to avoid duplication and ensure response integrity, always passing through an evaluation methodology, after which each user's metric is calculated, containing graphs, responses from everyone, and export options for both the dashboard and individual responses in PDF.",
+      videoUrl: "https://www.youtube.com/embed/MLC2SqxEGys",
+      githubUrl: "https://github.com/ramon-romano/sistema-diagnostico-jml",
+    },
+    {
+      id: "jml-insight",
+      titulo: "JML Insight",
+      resumo: "An AI that analyzes documents and generates compatibility levels.",
+      destaque: "JML Client",
+      stack: ["Python", "Next.js"],
+      descricaoCompleta:
+        "The JML Insight AI is an Artificial Intelligence that analyzes documents included by the user, one being the company course, and the other being the organizational chart. The AI reads the documents and, based on keyword logic and training, it knows which sectors are most compatible with that course, being very useful for the company's commercial team.\n\nThe system was developed in Python as the backend language ensuring a better flow of information for the AI to consume and analyze, while the frontend used Next.js to deliver a clean and intuitive interface for the user.",
+      videoUrl: "https://www.youtube.com/embed/rtCnfFMhgfE",
+      githubUrl: "https://github.com/ramon-romano/jml-insight",
+    },
+  ];
+
   const iconMap: Record<string, React.JSX.Element> = {
     Java: <FaJava title="Java" />,
     "Spring Boot": <SiSpringboot title="Spring Boot" />,
@@ -69,7 +114,6 @@ export default function Projetos() {
     Python: <FaPython title="Python" />,
   };
 
-  const { language, t } = useLanguage();
   const [projetos, setProjetos] = useState<Projeto[]>(fallbackProjetos);
   const [projetoAberto, setProjetoAberto] = useState<Projeto | null>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -83,8 +127,9 @@ export default function Projetos() {
   const portalTarget = typeof document !== "undefined" ? document.body : null;
 
   useEffect(() => {
+    setProjetos(fallbackProjetos);
     fetchPortfolioData<Projeto[]>("/api/projetos", fallbackProjetos, language).then(setProjetos);
-  }, [language]);
+  }, [language, fallbackProjetos]);
 
   useEffect(() => {
     if (!projetoAberto) return;

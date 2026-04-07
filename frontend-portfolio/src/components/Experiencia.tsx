@@ -5,40 +5,67 @@ import { fetchPortfolioData } from "@/src/lib/portfolioApi";
 import { type ExperienciaItem } from "@/src/types/portfolio";
 import { useLanguage } from "@/src/context/LanguageContext";
 
-const fallbackExperiencias: ExperienciaItem[] = [
-  {
-    empresa: "Elis",
-    cargo: "Estagiário de TI",
-    periodo: "jun 2024 - jun 2025",
-    jornada:
-      "Suporte técnico a usuários e máquinas, resolução de problemas de hardware e software e manutenção preventiva/corretiva da infraestrutura.",
-    tecnologias: ["PostgreSQL", "Linux", "Windows", "Redes"],
-  },
-  {
-    empresa: "GPA Tech",
-    cargo: "Freelancer Desenvolvedor Full-Stack",
-    periodo: "ago 2025 - set 2025",
-    jornada:
-      "Freelancer fazendo manutenção full-stack em sistemas de clientes, atuando em frontend e backend com foco em entregas rápidas.",
-    tecnologias: ["Node.js", "Next.js"],
-  },
-  {
-    empresa: "Grupo JML",
-    cargo: "Desenvolvedor Full-Stack Júnior",
-    periodo: "set 2025 - Atual",
-    jornada:
-      "Responsável por manutenção e evolução de sistemas de clientes, além do desenvolvimento de novas soluções para a empresa.",
-    tecnologias: ["Spring Boot", "Laravel", "Next.js", "MySQL"],
-  },
-];
-
 export default function Experiencia() {
   const { language, t } = useLanguage();
+
+  const fallbackExperiencias: ExperienciaItem[] = language === "pt" ? [
+    {
+      empresa: "Elis",
+      cargo: "Estagiário de TI",
+      periodo: "jun 2024 - jun 2025",
+      jornada:
+        "Suporte técnico a usuários e máquinas, resolução de problemas de hardware e software e manutenção preventiva/corretiva da infraestrutura.",
+      tecnologias: ["PostgreSQL", "Linux", "Windows", "Redes"],
+    },
+    {
+      empresa: "GPA Tech",
+      cargo: "Freelancer Desenvolvedor Full-Stack",
+      periodo: "ago 2025 - set 2025",
+      jornada:
+        "Freelancer fazendo manutenção full-stack em sistemas de clientes, atuando em frontend e backend com foco em entregas rápidas.",
+      tecnologias: ["Node.js", "Next.js"],
+    },
+    {
+      empresa: "Grupo JML",
+      cargo: "Desenvolvedor Full-Stack Júnior",
+      periodo: "set 2025 - Atual",
+      jornada:
+        "Responsável por manutenção e evolução de sistemas de clientes, além do desenvolvimento de novas soluções para a empresa.",
+      tecnologias: ["Spring Boot", "Laravel", "Next.js", "MySQL"],
+    },
+  ] : [
+    {
+      empresa: "Elis",
+      cargo: "IT Intern",
+      periodo: "Jun 2024 - Jun 2025",
+      jornada:
+        "Technical support for users and machines, hardware and software troubleshooting, and preventive/corrective maintenance of the IT infrastructure.",
+      tecnologias: ["PostgreSQL", "Linux", "Windows", "Networking"],
+    },
+    {
+      empresa: "GPA Tech",
+      cargo: "Full-Stack Developer",
+      periodo: "Aug 2025 - Sep 2025",
+      jornada:
+        "Freelancer providing full-stack maintenance for client systems, working in both frontend and backend with a focus on quick turnarounds.",
+      tecnologias: ["Node.js", "Next.js"],
+    },
+    {
+      empresa: "Grupo JML",
+      cargo: "Full-Stack Developer",
+      periodo: "Sep 2025 - Present",
+      jornada:
+        "Responsible for maintenance and evolution of client systems, besides the development of new solutions for the company.",
+      tecnologias: ["Spring Boot", "Laravel", "Next.js", "MySQL"],
+    },
+  ];
+
   const [experiencias, setExperiencias] = useState<ExperienciaItem[]>(fallbackExperiencias);
 
   useEffect(() => {
+    setExperiencias(fallbackExperiencias);
     fetchPortfolioData<ExperienciaItem[]>("/api/experiencias", fallbackExperiencias, language).then(setExperiencias);
-  }, [language]);
+  }, [language, fallbackExperiencias]);
 
   return (
     <section

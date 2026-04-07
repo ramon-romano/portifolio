@@ -7,55 +7,88 @@ import { fetchPortfolioData } from "@/src/lib/portfolioApi";
 import { type SkillItem } from "@/src/types/portfolio";
 import { useLanguage } from "@/src/context/LanguageContext";
 
-const fallbackSkills: SkillItem[] = [
-  {
-    nome: "Laravel",
-    experiencia:
-      "Linguagem principal no backend, com foco em APIs RESTful, autenticacao e integracao com banco relacional.",
-  },
-  {
-    nome: "Spring Boot",
-    experiencia:
-      "Experiencia com APIs escalaveis, arquitetura MVC e projetos pessoais orientados a boas praticas.",
-  },
-  {
-    nome: "Next.js",
-    experiencia:
-      "Tecnologia principal no frontend para interfaces modernas, performaticas e com boa experiencia de usuario.",
-  },
-  {
-    nome: "MySQL",
-    experiencia:
-      "Banco relacional mais usado em projetos pessoais e profissionais, incluindo modelagem e consultas avancadas.",
-  },
-  {
-    nome: "Python",
-    experiencia:
-      "Uso em automacao, analise de dados e IA com bibliotecas como Pandas, NumPy e TensorFlow.",
-  },
-  {
-    nome: "C++",
-    experiencia:
-      "Contato no inicio da jornada, com base para logica e desenvolvimento de jogos.",
-  },
-];
-
-const iconMap: Record<string, React.JSX.Element> = {
-  Laravel: <FaLaravel className="text-2xl" />,
-  "Spring Boot": <SiSpringboot className="text-2xl" />,
-  "Next.js": <SiNextdotjs className="text-2xl" />,
-  MySQL: <SiMysql className="text-2xl" />,
-  Python: <FaPython className="text-2xl" />,
-  "C++": <SiCplusplus className="text-2xl" />,
-};
-
 export default function HabilidadesSkills() {
   const { language, t } = useLanguage();
+
+  const fallbackSkills: SkillItem[] = language === "pt" ? [
+    {
+      nome: "Laravel",
+      experiencia:
+        "Linguagem principal no backend, com foco em APIs RESTful, autenticacao e integracao com banco relacional.",
+    },
+    {
+      nome: "Spring Boot",
+      experiencia:
+        "Experiencia com APIs escalaveis, arquitetura MVC e projetos pessoais orientados a boas praticas.",
+    },
+    {
+      nome: "Next.js",
+      experiencia:
+        "Tecnologia principal no frontend para interfaces modernas, performaticas e com boa experiencia de usuario.",
+    },
+    {
+      nome: "MySQL",
+      experiencia:
+        "Banco relacional mais usado em projetos pessoais e profissionais, incluindo modelagem e consultas avancadas.",
+    },
+    {
+      nome: "Python",
+      experiencia:
+        "Uso em automacao, analise de dados e IA com bibliotecas como Pandas, NumPy e TensorFlow.",
+    },
+    {
+      nome: "C++",
+      experiencia:
+        "Contato no inicio da jornada, com base para logica e desenvolvimento de jogos.",
+    },
+  ] : [
+    {
+      nome: "Laravel",
+      experiencia:
+        "Main backend language, focusing on RESTful APIs, authentication and integration with relational databases.",
+    },
+    {
+      nome: "Spring Boot",
+      experiencia:
+        "Experience with scalable APIs, MVC architecture and personal projects oriented towards best practices.",
+    },
+    {
+      nome: "Next.js",
+      experiencia:
+        "Core frontend technology for modern, high-performance interfaces with great user experience.",
+    },
+    {
+      nome: "MySQL",
+      experiencia:
+        "Relational database used in personal and professional projects, including modeling and advanced queries.",
+    },
+    {
+      nome: "Python",
+      experiencia:
+        "Used in automation, data analysis and AI with libraries like Pandas, NumPy and TensorFlow.",
+    },
+    {
+      nome: "C++",
+      experiencia:
+        "Contacted at the start of my journey, building logic foundations and game development.",
+    },
+  ];
+
   const [habilidades, setHabilidades] = useState<SkillItem[]>(fallbackSkills);
 
   useEffect(() => {
+    setHabilidades(fallbackSkills);
     fetchPortfolioData<SkillItem[]>("/api/skills", fallbackSkills, language).then(setHabilidades);
-  }, [language]);
+  }, [language, fallbackSkills]);
+
+  const iconMap: Record<string, React.JSX.Element> = {
+    Laravel: <FaLaravel className="text-2xl" />,
+    "Spring Boot": <SiSpringboot className="text-2xl" />,
+    "Next.js": <SiNextdotjs className="text-2xl" />,
+    MySQL: <SiMysql className="text-2xl" />,
+    Python: <FaPython className="text-2xl" />,
+    "C++": <SiCplusplus className="text-2xl" />,
+  };
 
   return (
     <section id="habilidades" className="scroll-mt-20 min-h-[calc(100vh-5rem)] max-w-6xl mx-auto px-6 py-12 flex flex-col justify-center">
