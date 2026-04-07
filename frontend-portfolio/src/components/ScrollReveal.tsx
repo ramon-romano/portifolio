@@ -18,9 +18,14 @@ export default function ScrollReveal({
   distance = 80,
 }: ScrollRevealProps) {
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize(); 
+    window.addEventListener("resize", handleResize);
+
     const node = ref.current;
     if (!node) return;
 
@@ -33,10 +38,15 @@ export default function ScrollReveal({
 
     observer.observe(node);
 
-    return () => observer.disconnect();
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      observer.disconnect();
+    };
   }, []);
 
-  const hiddenTransform = direction === "left" ? `translateX(-${distance}px)` : `translateX(${distance}px)`;
+  const hiddenTransform = isMobile 
+    ? "translateY(30px)" 
+    : direction === "left" ? `translateX(-${distance}px)` : `translateX(${distance}px)`;
 
   return (
     <div
@@ -45,7 +55,7 @@ export default function ScrollReveal({
       style={{
         transitionDelay: `${delayMs}ms`,
         opacity: isVisible ? 1 : 0,
-        transform: isVisible ? "translateX(0)" : hiddenTransform,
+        transform: isVisible ? "translate(0, 0)" : hiddenTransform,
       }}
     >
       {children}
