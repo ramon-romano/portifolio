@@ -38,47 +38,48 @@ export default function Header() {
             ))}
           </div>
 
-          {/* Language Switcher */}
-          <div className="flex gap-3 text-xs font-bold tracking-widest transition-all">
+          {/* Language Switcher - Desktop */}
+          <div className="flex gap-4 text-[10px] font-bold tracking-[0.25em] transition-all bg-white/5 px-4 py-2 rounded-full border border-white/10">
             <button
               onClick={() => setLanguage("pt")}
-              className={`hover:text-white transition-colors cursor-pointer ${language === "pt" ? "text-white border-b border-white" : "text-white/40"}`}
+              className={`hover:text-white transition-colors cursor-pointer ${language === "pt" ? "text-white" : "text-white/30"}`}
             >
               PT
             </button>
-            <span className="text-white/20">/</span>
+            <span className="text-white/10">|</span>
             <button
               onClick={() => setLanguage("en")}
-              className={`hover:text-white transition-colors cursor-pointer ${language === "en" ? "text-white border-b border-white" : "text-white/40"}`}
+              className={`hover:text-white transition-colors cursor-pointer ${language === "en" ? "text-white" : "text-white/30"}`}
             >
               EN
             </button>
           </div>
         </nav>
 
-        {/* Mobile Toggle */}
-        <div className="flex items-center gap-6 md:hidden">
-          <div className="flex gap-3 text-xs font-bold tracking-widest">
+        {/* Mobile Toggle & Language */}
+        <div className="flex items-center gap-5 md:hidden">
+          <div className="flex gap-2 text-[10px] font-bold tracking-widest bg-white/5 px-3 py-1.5 rounded-full border border-white/10">
             <button
               onClick={() => setLanguage("pt")}
-              className={`transition-colors ${language === "pt" ? "text-white" : "text-white/40"}`}
+              className={`transition-colors uppercase ${language === "pt" ? "text-white" : "text-white/30"}`}
             >
               PT
             </button>
+            <span className="text-white/10">|</span>
             <button
               onClick={() => setLanguage("en")}
-              className={`transition-colors ${language === "en" ? "text-white" : "text-white/40"}`}
+              className={`transition-colors uppercase ${language === "en" ? "text-white" : "text-white/30"}`}
             >
               EN
             </button>
           </div>
 
           <button
-            className="text-white"
+            className="text-white p-1"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle Menu"
           >
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
+            {isOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
       </div>
