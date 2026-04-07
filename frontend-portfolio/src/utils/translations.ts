@@ -35,6 +35,7 @@ export const translations = {
       whatsapp: "Meu WhatsApp",
       github: "Meu GitHub",
       linkedin: "Meu LinkedIn",
+      cv: "Baixar Currículo",
     },
     welcome: {
       title: "BEM-VINDO",
@@ -79,6 +80,7 @@ export const translations = {
       whatsapp: "My WhatsApp",
       github: "My GitHub",
       linkedin: "My LinkedIn",
+      cv: "Download CV",
     },
     welcome: {
       title: "WELCOME",

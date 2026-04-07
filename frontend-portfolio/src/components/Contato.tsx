@@ -1,4 +1,4 @@
-import { Mail, Linkedin, Github, MessageCircle } from "lucide-react";
+import { Mail, Linkedin, Github, MessageCircle, FileDown } from "lucide-react";
 import { useLanguage } from "@/src/context/LanguageContext";
 
 export default function Contato() {
@@ -14,6 +14,16 @@ export default function Contato() {
       </p>
 
       <div className="flex flex-wrap flex-col sm:flex-row justify-center items-center gap-6">
+        {/* CV Button - Special destaque on Mobile */}
+        <a
+          href="/Ramon Romano.pdf"
+          download="Ramon Romano - Curriculo.pdf"
+          className="order-first sm:order-last w-full sm:w-auto flex items-center gap-3 px-8 py-5 bg-white/10 border border-white/20 text-white rounded-xl hover:bg-white hover:text-black hover:-translate-y-1 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.05)] backdrop-blur-md min-w-[240px] justify-center group"
+        >
+          <FileDown className="w-5 h-5 group-hover:animate-bounce" />
+          <span className="font-bold tracking-[0.15em] uppercase text-xs">{t.contact.cv}</span>
+        </a>
+
         <a
           href="mailto:ramontardetti14@gmail.com"
           className="flex items-center gap-3 px-8 py-4 bg-white text-black rounded-xl hover:bg-zinc-200 hover:-translate-y-1 transition-all duration-300 shadow-lg min-w-[240px] justify-center"
