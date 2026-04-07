@@ -11,8 +11,8 @@ export const metadata: Metadata = {
   title: "Portfolio | Ramon Romano",
   description: "Meu portfolio de desenvolvimento",
   icons: {
-    icon: "/img/logo.png",
-    apple: "/img/logo.png",
+    icon: "/img/logo.png?v=1.1",
+    apple: "/img/logo.png?v=1.1",
   },
 };
 
@@ -23,9 +23,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className="scroll-smooth font-light">
-      <head>
-        <link rel="icon" href="/img/logo.png" sizes="any" />
-      </head>
       <body className={`${oswald.className} bg-zinc-950 text-white min-h-screen relative`}>
         {/* Background Atmosphere */}
         <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
