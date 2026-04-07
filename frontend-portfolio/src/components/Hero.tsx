@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -27,38 +27,38 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="scroll-mt-20 min-h-[calc(100vh-5rem)] max-w-6xl mx-auto px-6 pt-20 pb-12 flex flex-col items-center justify-center text-center"
+      className="scroll-mt-20 min-h-[calc(100vh-5rem)] max-w-6xl mx-auto px-6 pt-28 sm:pt-20 pb-12 flex flex-col items-center justify-center text-center"
     >
-      <div className="flex items-center gap-5">
+      <div className="flex flex-col sm:flex-row items-center gap-5 sm:gap-8">
         <Image
           src="/img/logo.png"
           alt="Logo Ramon Romano"
-          width={86}
-          height={86}
-          className="rounded-md [animation:spin_10s_linear_infinite]"
+          width={64}
+          height={64}
+          className="sm:w-[86px] sm:h-[86px] rounded-md [animation:spin_10s_linear_infinite]"
         />
-        <h1 className="text-5xl sm:text-7xl font-light tracking-[0.2em] uppercase text-white">RAMON ROMANO</h1>
+        <h1 className="text-3xl sm:text-5xl md:text-7xl font-light tracking-[0.2em] uppercase text-white">RAMON ROMANO</h1>
       </div>
 
       <div className="mt-8 w-full max-w-2xl border border-white/20 bg-black/50 rounded-xl px-5 py-4 text-left shadow-lg">
-        <p className="font-mono text-lg sm:text-2xl text-zinc-100">
+        <p className="font-mono text-base sm:text-xl md:text-2xl text-zinc-100">
           <span className="text-zinc-500">{">"}</span> {typedText}
-          <span className="inline-block w-[10px] h-[1.1em] ml-1 align-middle bg-white animate-pulse" />
+          <span className="inline-block w-[8px] sm:w-[10px] h-[1.1em] ml-1 align-middle bg-white animate-pulse" />
         </p>
       </div>
 
-      <div className="mt-10 flex items-center gap-10 sm:gap-14 text-white/90">
+      <div className="mt-10 flex flex-wrap justify-center items-center gap-8 sm:gap-14 text-white/90">
         <div className="flex flex-col items-center gap-2">
-          <FaLaravel className="text-4xl sm:text-5xl" />
-          <span className="text-xs tracking-[0.2em] uppercase text-zinc-300">Laravel</span>
+          <FaLaravel className="text-3xl sm:text-5xl" />
+          <span className="text-[10px] sm:text-xs tracking-[0.2em] uppercase text-zinc-300">Laravel</span>
         </div>
         <div className="flex flex-col items-center gap-2">
-          <SiSpringboot className="text-4xl sm:text-5xl" />
-          <span className="text-xs tracking-[0.2em] uppercase text-zinc-300">Spring Boot</span>
+          <SiSpringboot className="text-3xl sm:text-5xl" />
+          <span className="text-[10px] sm:text-xs tracking-[0.2em] uppercase text-zinc-300">Spring Boot</span>
         </div>
         <div className="flex flex-col items-center gap-2">
-          <SiNextdotjs className="text-4xl sm:text-5xl" />
-          <span className="text-xs tracking-[0.2em] uppercase text-zinc-300">Next.js</span>
+          <SiNextdotjs className="text-3xl sm:text-5xl" />
+          <span className="text-[10px] sm:text-xs tracking-[0.2em] uppercase text-zinc-300">Next.js</span>
         </div>
       </div>
     </section>
